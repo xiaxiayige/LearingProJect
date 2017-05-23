@@ -25,6 +25,15 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".FrameAnimationDemo"
+            android:label="FrameAnimationDemo">
+            <intent-filter>
+                <action android:name="com.qilin.AnimationLearing.FrameAnimationDemo"></action>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
