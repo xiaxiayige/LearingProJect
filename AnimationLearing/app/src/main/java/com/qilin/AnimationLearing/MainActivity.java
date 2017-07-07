@@ -10,7 +10,7 @@ import com.qilin.AnimationLearing.adapter.AnimtionListAdapter;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyle_id;
 
-    private String[] animationArr={"ValueAnimtionActivity","FrameAnimationDemo"};
+    private String[] animationArr={"ValueAnimtionActivity","FrameAnimationDemo","WordJumpAnimationActivity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

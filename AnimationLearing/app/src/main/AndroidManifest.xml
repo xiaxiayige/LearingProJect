@@ -34,6 +34,16 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".WordJumpAnimationActivity"
+            android:label="WordJumpAnimationActivity">
+            <intent-filter>
+                <action android:name="com.qilin.AnimationLearing.WordJumpAnimationActivity"></action>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
