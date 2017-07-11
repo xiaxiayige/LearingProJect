@@ -29,7 +29,7 @@ public class ValueAnimtionActivity extends AppCompatActivity {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
-//                 textView.setTranslationX((int)value);
+                 textView.setTranslationX((int)value);
                 textView.setText(String.format("%s", (int) value));
             }
         });

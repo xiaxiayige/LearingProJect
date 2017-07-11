@@ -22,7 +22,7 @@
             android:label="ValueAnimtionActivity">
             <intent-filter>
                 <action android:name="com.qilin.AnimationLearing.ValueAnimtionActivity"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -31,7 +31,7 @@
             android:label="FrameAnimationDemo">
             <intent-filter>
                 <action android:name="com.qilin.AnimationLearing.FrameAnimationDemo"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -40,7 +40,15 @@
             android:label="WordJumpAnimationActivity">
             <intent-filter>
                 <action android:name="com.qilin.AnimationLearing.WordJumpAnimationActivity"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MoveToPositionActivity"
+            android:label="MoveToPositionActivity">
+            <intent-filter>
+                <action android:name="com.qilin.AnimationLearing.MoveToPositionActivity"></action>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

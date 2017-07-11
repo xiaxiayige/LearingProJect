@@ -10,15 +10,15 @@ import com.qilin.AnimationLearing.adapter.AnimtionListAdapter;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyle_id;
 
-    private String[] animationArr={"ValueAnimtionActivity","FrameAnimationDemo","WordJumpAnimationActivity"};
+    private String[] animationArr = {"ValueAnimtionActivity", "FrameAnimationDemo", "WordJumpAnimationActivity", "MoveToPositionActivity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyle_id= (RecyclerView) findViewById(R.id.recyle_id);
+        recyle_id = (RecyclerView) findViewById(R.id.recyle_id);
         recyle_id.setLayoutManager(new LinearLayoutManager(this));
-        AnimtionListAdapter adapter=new AnimtionListAdapter(animationArr);
+        AnimtionListAdapter adapter = new AnimtionListAdapter(animationArr);
         recyle_id.setAdapter(adapter);
     }
 
