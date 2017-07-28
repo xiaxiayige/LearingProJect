@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlayout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp">
+        
+        <TextView
+            android:id="@+id/txtv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:padding="10dp"
+            android:text="张三"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+    
+    
+    <TextView
+        android:id="@+id/txtv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorAccent"
+        android:padding="10dp"
+        android:text="你交什么名字"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
+    
+    
+    
