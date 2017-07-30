@@ -11,6 +11,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Administrator on 2017/7/9.
  */
@@ -38,7 +40,7 @@ public class MoveToPositionActivity extends AppCompatActivity {
                 final TextView textView = new TextView(MoveToPositionActivity.this);
                 textView.setText(t1.getText());
                 textView.setTextColor(Color.YELLOW);
-                textView.setBackgroundColor(Color.BLACK);
+//                textView.setBackgroundColor(Color.BLACK);
                 textView.setGravity(Gravity.CENTER);
 
                 int[] stc = new int[2];
@@ -47,16 +49,14 @@ public class MoveToPositionActivity extends AppCompatActivity {
                 int[] stc2 = new int[2];
                 t2.getLocationInWindow(stc2);
 
-                Log.i("MainActivity", "onClick: stc =" + stc[0] + " , " + stc[1] + " , Width = "  +t1.getWidth() + " , height = " + t1.getHeight());
-                Log.i("MainActivity", "onClick: stc =" + stc2[0] + " , " + stc2[1] + " , Width = "  +t2.getWidth() + " , height = " + t2.getHeight());
+                Log.i("MainActivity", "onClick: stc =" + stc[0] + " , " + stc[1] + " , Width = " + t1.getWidth() + " , height = " + t1.getHeight());
+                Log.i("MainActivity", "onClick: stc =" + stc2[0] + " , " + stc2[1] + " , Width = " + t2.getWidth() + " , height = " + t2.getHeight());
 
 
-
-
-
-                RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                layoutParms.setMargins(stc[0], stc[1] - (t1.getHeight() * 2), 0, 0);
+                RelativeLayout.LayoutParams layoutParms = new RelativeLayout.LayoutParams(t1.getWidth(), t1.getHeight());
                 textView.setPadding(t1.getPaddingLeft(), t1.getPaddingTop(), t1.getPaddingRight(), t1.getPaddingBottom());
+                layoutParms.setMargins(stc[0], stc[1]-getStatusBarHeight(), 0, 0);
+
                 textView.setLayoutParams(layoutParms);
 
                 rlayout_root.addView(textView);
@@ -67,19 +67,28 @@ public class MoveToPositionActivity extends AppCompatActivity {
                 int formY = 0;
                 int toY;
 
+                if(stc[0]>stc2[0]){ //x轴往左边移动
+                    toX=(stc[0]-stc2[0])*-1;
+                }else{ //x轴往右边移动
+                    toX=stc2[0]-stc[0];
+                }
 
-                TranslateAnimation tran = new TranslateAnimation(0, -(stc2[0] - (stc2[0] - Math.abs(t2.getWidth()))), 0, 0);
+                if(stc[1]>stc2[0]){ //Y轴往上移动
+                    toY=(stc[1]-stc2[1])*-1;
+                }else{ //Y轴往下移动
+                    toY=stc2[1]-stc[1];
+                }
+                TranslateAnimation tran = new TranslateAnimation(formX, toX, formY, toY);
                 tran.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
-
                     }
 
                     @Override
                     public void onAnimationEnd(Animation animation) {
 //                        t2.setText(textView.getText());
 //                        textView.setVisibility(View.GONE);
-//                        rlayout_root.removeView(textView);
+                        rlayout_root.removeView(textView);
                     }
 
                     @Override
@@ -95,5 +104,35 @@ public class MoveToPositionActivity extends AppCompatActivity {
         });
 
 //
+    }
+
+    private int getStatusBarHeight() {
+        Class<?> c = null;
+
+        Object obj = null;
+
+        Field field = null;
+
+        int x = 0, sbar = 0;
+
+        try {
+
+            c = Class.forName("com.android.internal.R$dimen");
+
+            obj = c.newInstance();
+
+            field = c.getField("status_bar_height");
+
+            x = Integer.parseInt(field.get(obj).toString());
+
+            sbar = getResources().getDimensionPixelSize(x);
+
+        } catch (Exception e1) {
+
+            e1.printStackTrace();
+
+        }
+
+        return sbar;
     }
 }
