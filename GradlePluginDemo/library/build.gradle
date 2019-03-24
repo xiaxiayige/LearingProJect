@@ -1,0 +1,31 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+repositories {
+    mavenCentral()
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //提交到远程服务器：
+            // repository(url: "http://127.0.0.1:8081/repository/maven-releases/") {
+            //      authentication(userName: 'admin', password: 'admin123')
+            // }
+            //本地的Maven地址设置为E:/Maven
+            pom.project {
+                version '1.0.0'
+                artifactId 'testPlugin'
+                groupId 'com.xiaxiayige.plugin'
+                packaging 'aar'
+                description 'update version 1.0.0'
+            }
+            repository(url: uri('E:/repo'))
+        }
+    }
+}
