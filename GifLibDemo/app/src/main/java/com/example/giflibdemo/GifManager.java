@@ -16,7 +16,7 @@ public class GifManager {
     long gifAddress;
 
     public GifManager() {
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "fire.gif");
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "demo6.gif");
         gifAddress = loadGifFile(file.getAbsolutePath());
     }
 

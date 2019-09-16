@@ -145,15 +145,15 @@ int EGifCloseFile(GifFileType *GifFile, int *ErrorCode);
 
 /* These are legacy.  You probably do not want to call them directly */
 int EGifPutScreenDesc(GifFileType *GifFile,
-                      const int GifWidth, const int GifHeight, 
-		      const int GifColorRes,
-                      const int GifBackGround,
-                      const ColorMapObject *GifColorMap);
-int EGifPutImageDesc(GifFileType *GifFile, 
-		     const int GifLeft, const int GifTop,
-                     const int GifWidth, const int GifHeight, 
-		     const bool GifInterlace,
-                     const ColorMapObject *GifColorMap);
+const int GifWidth, const int GifHeight,
+const int GifColorRes,
+const int GifBackGround,
+const ColorMapObject *GifColorMap);
+int EGifPutImageDesc(GifFileType *GifFile,
+					 const int GifLeft, const int GifTop,
+					 const int GifWidth, const int GifHeight,
+					 const bool GifInterlace,
+					 const ColorMapObject *GifColorMap);
 void EGifSetGifVersion(GifFileType *GifFile, const bool gif89);
 int EGifPutLine(GifFileType *GifFile, GifPixelType *GifLine,
                 int GifLineLen);

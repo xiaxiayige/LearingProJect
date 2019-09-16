@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class MainActivity extends AppCompatActivity {
 
     private Bitmap bitmap;
@@ -23,20 +25,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 200);
-        // Example of a call to a native method
         Button btn = findViewById(R.id.btn);
         img = findViewById(R.id.img);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 gifManager = new GifManager();
-                int width = gifManager.getWidth(gifManager.gifAddress);
-                int height = gifManager.getHeight(gifManager.gifAddress);
-                System.out.println("width = [" + width + "]" + " height = [" + height + "]");
-                bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-                int delyTime = gifManager.updateFrame(gifManager.gifAddress, bitmap);
-                handler.sendEmptyMessageDelayed(0, delyTime);
 
+                bitmap = Bitmap.createBitmap(gifManager.getWidth(gifManager.gifAddress), gifManager.getHeight(gifManager.gifAddress), Bitmap.Config.ARGB_8888);
+                img.setImageBitmap(bitmap);
+
+                int delyTime = gifManager.updateFrame(gifManager.gifAddress, bitmap);
+
+                handler.sendEmptyMessageDelayed(0, delyTime);
             }
         });
     }
@@ -45,9 +46,15 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-           int delyTime = gifManager.updateFrame(gifManager.gifAddress, bitmap);
-           handler.sendEmptyMessageDelayed(0, delyTime);
+            int delyTime = gifManager.updateFrame(gifManager.gifAddress, bitmap);
+            handler.sendEmptyMessageDelayed(0, delyTime);
+            img.setImageBitmap(bitmap);
         }
     };
 
+    @Override
+    protected void onDestroy() {
+        handler.removeCallbacksAndMessages(null);
+        super.onDestroy();
+    }
 }
