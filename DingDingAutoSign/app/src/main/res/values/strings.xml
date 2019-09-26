@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DingDingAutoSign</string>
+    <string name="accessibility_service_label">钉钉自动打卡</string>
+</resources>
