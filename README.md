@@ -1,4 +1,4 @@
-﻿# LearingProJect  学习记录摘要
+# LearingProJect  学习记录摘要
 
 ## AnimationLearing Android动画相关学习记录
 
@@ -12,3 +12,5 @@
 
 
 ## NDK giflib deom 实现
+
+## RxjavaDemo  Rxjava操作符例子以及手写Observable实现
