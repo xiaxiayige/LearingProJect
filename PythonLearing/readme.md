@@ -6,3 +6,5 @@ tinify demo升级版  遍历文件夹中的图片文件 压缩
 
 
 uploadApk 上传apk到蒲公英
+
+FlutterAssetsAutoImport Flutter 自动导入Assets目录下文件
