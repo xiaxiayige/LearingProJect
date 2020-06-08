@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.xiaxiayige.skindemo"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        // 配置执行 dx 命令是为其分配的最大堆内存
+        javaMaxHeapSize "4g"
+        // 配置是否预执行 dex Libraries 工程，开启后会提高增量构建速度，不过会影响 clean 构建的速度，默认 true
+        preDexLibraries = false
+        // 配置是否开启 jumbo 模式，代码方法是超过 65535 需要强制开启才能构建成功
+        jumboMode true
+        // 配置 Gradle 运行 dx 命令时使用的线程数量
+        threadCount 8
+        // 配置multidex参数
+        additionalParameters = [
+                '--multi-dex', // 多dex分包
+                '--set-max-idx-number=50000', // 每个包内方法数上限
+                // '--main-dex-list=' + '/multidex-config.txt', // 打包到主classes.dex的文件列表
+                '--minimal-main-dex'
+        ]
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

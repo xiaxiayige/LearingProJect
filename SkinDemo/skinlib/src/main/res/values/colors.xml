@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- 定义需要换肤的值的属性名称 -->
+    <color name="text_color">#FF3E96</color>
+    <color name="bg_color">#FF00FF</color>
+
+
+
+
+</resources>
