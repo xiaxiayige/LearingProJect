@@ -4,9 +4,12 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
+import android.provider.CalendarContract
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.ColorUtils
+import androidx.palette.graphics.Palette
+import androidx.palette.graphics.Target
 
 
 /***
@@ -55,19 +58,40 @@ class MusicBackgroundView : View {
     }
 
 
-    fun changeBg(newColor: Int) {
-        val oldColor = bgColor
-        val valueAnimator = ValueAnimator.ofInt(oldColor, newColor)
-        with(valueAnimator) {
-            addUpdateListener {
-                bgColor = it.animatedValue as Int
+    fun changeBg(bitmap: Bitmap) {
+        Palette.from(bitmap).generate {
+            var targetColor:Int
+            var isWhite=false;
+            var swatchForTarget = it?.getSwatchForTarget(Target.VIBRANT)
+            if(swatchForTarget==null){
+                swatchForTarget=it?.dominantSwatch
+            }
+
+            if(!isWhiteOrBlack(swatchForTarget?.hsl!!)){
+                targetColor=swatchForTarget.rgb
+                bgColor=targetColor
                 postInvalidate()
             }
-            setEvaluator(ArgbEvaluator())
-            duration = 800
-            start()
         }
 
+
+//        val oldColor = bgColor
+//        val valueAnimator = ValueAnimator.ofInt(oldColor, newColor)
+//        with(valueAnimator) {
+//            addUpdateListener {
+//                bgColor = it.animatedValue as Int
+//                postInvalidate()
+//            }
+//            setEvaluator(ArgbEvaluator())
+//            duration = 800
+//            start()
+//        }
+
+    }
+
+    private fun isWhiteOrBlack(hsl: FloatArray): Boolean {
+        val hslToColor = ColorUtils.HSLToColor(hsl)
+        return hslToColor==Color.WHITE || hslToColor == Color.BLACK
     }
 
 
