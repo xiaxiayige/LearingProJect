@@ -21,8 +21,8 @@ class MusicBackgroundView : View {
     var wavepaint: Paint = Paint()
     var bgColor = Color.parseColor("#30e8bf")
     var mTranPath: Path? = null
-    var waveHeight_A = 100f //浪高
-    var waveHeight_B = 80f  //浪低
+    var waveHeight_A = 50f //浪高
+    var waveHeight_B = 30f  //浪低
     var mHheight = waveHeight_A+ waveHeight_B //水平高度  距离底部100高度
 
     constructor(context: Context?) : this(context, null)
@@ -46,7 +46,6 @@ class MusicBackgroundView : View {
     }
 
     var xOffset = 0f
-    var X_SPEED = 0f
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         paint.setColor(bgColor)
